@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${design.datasource.driver-class-name}
+      url: jdbc:mysql://${design.datasource.host}:${design.datasource.port}/${design.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${design.datasource.username}
+      password: ${design.datasource.password}
+
+mybatis:
+  #mapper????
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.design
+  configuration:
+    #??mybatis????
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+    log-level: DEBUG
+    #?????
+    map-underscore-to-camel-case: true
